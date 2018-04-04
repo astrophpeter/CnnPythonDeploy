@@ -1,5 +1,5 @@
 # CnnPythonDeploy
-Deployment of Cnn in Python Script.
+Deployment of Cnn in Python Script. Python wrapping for the convolutional neural net classifier. Takes in Gaia Spectrum as a numpy array for input and resturns predicted class. Total pre trained model size roughly 22Mb. Takes on average 0.2ms to load model and classify one Gaia spectrum. Usage instructions below. 
 
 
 # Contents
