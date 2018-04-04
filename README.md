@@ -20,3 +20,14 @@ You will need the follow packages, they can all be installed via pip
 5. Scikit-learn [http://scikit-learn.org/stable/install.html]
 
 ``` $pip install -U scikit-learn```
+
+# Example Usage
+
+```
+>>> GaiaSpectrum = numpy.array([0.234,...,1.344]
+>>> result = predict(GaiaSpectrum)
+>>> result['class']
+['SN1a']
+>>> result['prob']
+[0.9978]
+```
