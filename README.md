@@ -7,9 +7,11 @@ Deployment of the Cnn in Python. Python wrapping for the convolutional neural ne
 1. `model/` contains all the data requited to build the trained tensor
     flow model.
 
-*`model/model-v1.json` meta informationa about model topology used to build the tensorflow graph.
-*`model/model-v1.h5` binary fule containing all of the train weights and baises which populate the tensorflow graph.
-*`model/classes.npy` contains the mapping from the human readable classes ('SN1a,'SNII etc..) to machine readble classes ([1,3,0...]).
+* `model/model-v1.json` meta informationa about model topology used to build the tensorflow graph.
+
+* `model/model-v1.h5` binary file containing all of the trained weights and baises which populate the tensorflow graph.
+
+* `model/classes.npy` contains the mapping from the human readable classes ('SN1a,'SNII etc..) to machine readble classes ([1,3,0...]).
 
 2.  `utils.py` python script containing the prediction function which takes Gaia Spectra and returns classification using tensorflow model. Usage and explaination below.
 
