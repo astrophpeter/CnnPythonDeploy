@@ -11,7 +11,7 @@ from keras.models import model_from_json
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import os
-
+import time
 
 def predict(GaiaSpectrum,
 		modelDir='model/model-v1.',
@@ -59,22 +59,23 @@ def predict(GaiaSpectrum,
 	# Reshape Spectrum for input to tensorflow model
 	if len(GaiaSpectrum.flatten()) == 120:
 		GaiaSpectrum = np.array([GaiaSpectrum])
-
-
 	GaiaSpectrum = GaiaSpectrum.reshape(GaiaSpectrum.shape[0], 1, 120, 1)
 	
 	#Predict Class
 	pred = loaded_model.predict(GaiaSpectrum)
 	
-	print(pred)
-
 	#get the predicted class name and probability
 	className = encoder.inverse_transform(np.argmax(pred,axis=1))
 	prob = np.max(pred,axis=1)
 
 	return {'class': className.astype(str), 'prob' : prob}
 
-spec = np.load('spec_all.npy')
-result = predict(spec[456])
+if __name__ == '__main__':
+	
+	spec = np.load('spec_all.npy')
+	print('Timing classification of ' + str(len(spec)) + ' spectra')
+	start = time.time()
+	result = predict(spec)
+	end = time.time()
+	print('Time taken per Spectrum: ' + str((end-start)/len(spec)*1000) + ' ms')
 
-print(result['prob'])
