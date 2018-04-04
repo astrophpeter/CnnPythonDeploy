@@ -1,5 +1,5 @@
 # CnnPythonDeploy
-Deployment of Cnn in Python Script. Python wrapping for the convolutional neural net classifier. Takes in Gaia Spectrum as a numpy array for input and resturns predicted class. Total pre trained model size roughly 22Mb. Takes on average 0.2ms to load model and classify one Gaia spectrum. Usage instructions below. 
+Deployment of the Cnn in Python. Python wrapping for the convolutional neural net classifier. Takes in Gaia Spectrum as a numpy array forinput and returns predicted class. Total pre trained model size roughly 22Mb. Takes on average 0.2ms to load model and classify one Gaia spectrum. Usage instructions below. 
 
 
 # Contents
@@ -7,11 +7,9 @@ Deployment of Cnn in Python Script. Python wrapping for the convolutional neural
 1. `model/` contains all the data requited to build the trained tensor
     flow model.
 
-...`model/model-v1.json` meta informationa about model topology used to build the tensorflow graph
-
-...`model/model-v1.h5` binary fule containing all of the train weights and baises which populate the tensorflow graph
-
-...`model/classes.npy` contains the mapping from the human readable classes ('SN1a,'SNII etc..) to machine readble classes ([1,3,0...])
+..`model/model-v1.json` meta informationa about model topology used to build the tensorflow graph.
+..`model/model-v1.h5` binary fule containing all of the train weights and baises which populate the tensorflow graph.
+..`model/classes.npy` contains the mapping from the human readable classes ('SN1a,'SNII etc..) to machine readble classes ([1,3,0...]).
 
 2.  `utils.py` python script containing the prediction function which takes Gaia Spectra and returns classification using tensorflow model. Usage and explaination below.
 
@@ -22,7 +20,7 @@ Deployment of Cnn in Python Script. Python wrapping for the convolutional neural
 
 # Prerequisites
 
-You will need the follow packages, they can all be installed via pip
+You will need the following packages, they can all be installed via pip
 
 1. Tensorflow  [https://www.tensorflow.org/install/]
 
@@ -42,9 +40,10 @@ You will need the follow packages, they can all be installed via pip
 
 # Example Usage
 
-This example shows how to classify one GaiaSpectrum which is inputted as a numpy array of length 120
+This example shows how to classify one Gaia spectrum which is inputted as a numpy array of length 120,
 corresponding the number of pixels. The output results contain the predicted class and the corresponding
-softmax probabilty associated with that classification. More example usage can by found in the `example.py` script. 
+softmax probabilty associated with that classification. More example usage can by found in the `example.py` script. To get
+maxium performance it is recomended to pass many spectra into the predict funtion as an array.
 
 ```
 >>> from utils import predict
