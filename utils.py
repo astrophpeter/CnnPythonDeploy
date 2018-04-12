@@ -70,12 +70,12 @@ def predict(GaiaSpectrum,
 
 	return {'class': className.astype(str), 'prob' : prob}
 
-if __name__ == '__main__':
-	
-	spec = np.load('spec_all.npy')
-	print('Timing classification of ' + str(len(spec)) + ' spectra')
-	start = time.time()
-	result = predict(spec)
-	end = time.time()
-	print('Time taken per Spectrum: ' + str((end-start)/len(spec)*1000) + ' ms')
+#if __name__ == '__main__':
+#	
+#	spec = np.load('spec_all.npy')
+#	print('Timing classification of ' + str(len(spec)) + ' spectra')
+#	start = time.time()
+#	result = predict(spec)
+#	end = time.time()
+#	print('Time taken per Spectrum: ' + str((end-start)/len(spec)*1000) + ' ms')
 
