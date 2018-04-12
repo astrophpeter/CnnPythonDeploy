@@ -1,6 +1,7 @@
 # CnnPythonDeploy
 Deployment of the Cnn in Python. Python wrapping for the convolutional neural net classifier. Takes in Gaia Spectrum as a numpy array forinput and returns predicted class. Total pre trained model size roughly 22Mb. Takes on average 0.2ms to load model and classify one Gaia spectrum. Usage instructions below. 
 
+The current version of the model was trained and tested on the 'sigma clipped' spectra, so is unlikly to work well the 'non sigma clipped spectra'. Its accuracy on the test set is 98.90%.
 
 # Contents
 
@@ -14,12 +15,7 @@ Deployment of the Cnn in Python. Python wrapping for the convolutional neural ne
 * `model/classes.npy` contains the mapping from the human readable classes ('SN1a,'SNII etc..) to machine readble classes ([1,3,0...]).
 
 2.  `utils.py` python script containing the prediction function which takes Gaia Spectra and returns classification using tensorflow model. Usage and explaination below.
-
-3. `examples.py` python script showing how to use the predict function.
-
-4. `spec_all.npy` Saved array of some Gaia Spectra - not required only used test as input to predict function.
  
-
 # Prerequisites
 
 You will need the following packages, they can all be installed via pip
@@ -44,8 +40,10 @@ You will need the following packages, they can all be installed via pip
 
 This example shows how to classify one Gaia spectrum which is inputted as a numpy array of length 120,
 corresponding the number of pixels. The output results contain the predicted class and the corresponding
-softmax probabilty associated with that classification. More example usage can by found in the `example.py` script. To get
+softmax probabilty associated with that classification. To get
 maxium performance it is recomended to pass many spectra into the predict funtion as an array.
+
+Classify one Gaia Spectrum
 
 ```
 >>> from utils import predict
@@ -57,3 +55,15 @@ maxium performance it is recomended to pass many spectra into the predict funtio
 >>> result['prob']
 [0.9978]
 ```
+
+... Many Gaia Spectra
+
+````
+>>> GaiaSpectra = numpy.array([numpy.array([0.234,...,1.344]),...,numpy.array([0.033,....,0.334]))
+>>> result = predict(GaiaSpectra)
+>>> result['class']
+['SN1a',....,'SNII']
+>>> result['prob']
+[0.9978,....,0.98939]
+```
+
